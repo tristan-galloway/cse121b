@@ -59,6 +59,8 @@ const filterByType = function(listOfPokemon) {
     }
 };
 
+// change
+
 /* Event Listener */
 document.getElementById('filterByType').addEventListener('change', () => {filterByType(Pokedex)});
 
