@@ -254,7 +254,7 @@ footer {
     margin-bottom: 3rem;
 }
 
-#temples article, #pokemon article {
+#temples article {
     height: 250px;
     margin: .5rem;
     border: 1px solid rgba(0, 0, 0, .1);
@@ -266,16 +266,44 @@ footer {
     justify-content: center;
 }
 
-#temples h4, #pokemon h4 {
+#temples h4 {
     color: navy;
     font-size: smaller;
 }
 
 
-#temples img, #pokemon img {
+#temples img {
     width: 250px;
     height: auto;
     box-shadow: 0 0 30px #777;
+    margin: .5rem;
+}
+
+#filterByType {
+    margin-left: 10px;
+}
+
+#pokemon article {
+    height: 250px;
+    margin: .5rem;
+    border: 1px solid rgba(0, 0, 0, .1);
+    padding: 1rem;
+    background-color: #eee;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border-radius: 25px;
+}
+
+#pokemon h4 {
+    color: navy;
+    font-size: smaller;
+}
+
+#pokemon img {
+    width: 100px;
+    height: auto;
     margin: .5rem;
 }
 
