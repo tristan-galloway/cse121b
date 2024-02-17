@@ -1,55 +1,57 @@
-/* W05: Programming Tasks */
+/* W06: Final Project */
 
 /* Declare and initialize global variables */
 const pokemonElement = document.getElementById("pokemon");
 
-let pokemonList = []
+let Pokedex = []
 
 /* async displayPokemon Function */
 const displayPokemon = (listOfPokemon) => {
     listOfPokemon.forEach(pokemon => {
         let article = document.createElement('article');
         let h3 = document.createElement('h3');
-        h3.textContent = pokemon.name.english;
-        let img = document.createElement('img');
-        img.setAttribute('src', temple.imageUrl);
-        img.setAttribute('alt', temple.location);
+        let h4Id = document.createElement('h4');
+        let h4Type = document.createElement('h4');
+        let h4Hp = document.createElement('h4');
+        h3.textContent = `Name: ${pokemon.name.english}`;
+        h4Id.textContent = `ID: ${pokemon.id.toString().padStart(3, '0')}`;
+        h4Type.textContent = `Type: ${pokemon.type}`;
+        h4Hp.textContent = `HP: ${pokemon.base.HP}`;
         article.appendChild(h3);
-        article.appendChild(img);
-        templesElement.appendChild(article);
+        article.appendChild(h4Id);
+        article.appendChild(h4Type);
+        article.appendChild(h4Hp);
+        pokemonElement.appendChild(article);
     });
 };
 
-/* async getTemples Function using fetch()*/
-const getTemples = async () => {
-    const response = await fetch('https://byui-cse.github.io/cse121b-ww-course/resources/temples.json');
+/* async getPokedex Function using fetch()*/
+const getPokedex = async () => {
+    const response = await fetch('https://tristan-galloway.github.io/cse121b/pokedex.json');
     if (response.ok) {
-        templeList = await response.json();
+        Pokedex = await response.json();
     };
-    displayTemples(templeList)
+    displayPokemon(Pokedex)
 };
 
 /* reset Function */
 const reset = function() {
-    templesElement.innerHTML = "";
+    pokemonElement.innerHTML = "";
 };
 
-/* filterTemples Function */
-const filterTemples = function(temples) {
+/* sortPokemon Function */
+const sortPokemon = function(listOfPokemon) {
     reset()
     let filter = document.getElementById('filtered').value;
     switch (filter) {
-        case 'utah':
-            displayTemples(temples.filter(temple => temple.location.includes("Utah")));
+        case 'az':
+            displayPokemon(listOfPokemon.filter(pokemon => pokemon.sort()))
             break;
-        case 'notutah':
-            displayTemples(temples.filter(temple => !temple.location.includes("Utah")));
+        case 'za':
+            
             break;
-        case 'older':
-            displayTemples(temples.filter(temple => new Date(temple.dedicated) < new Date(1950, 0, 1)));
-            break;
-        case "all":
-            displayTemples(temples)
+        case 'id':
+            
             break;
         default:
             break;
@@ -57,6 +59,6 @@ const filterTemples = function(temples) {
 };
 
 /* Event Listener */
-document.getElementById('filtered').addEventListener('change', () => {filterTemples(templeList)});
+document.getElementById('sorted').addEventListener('change', () => {sortPokemon(Pokedex)});
 
-getTemples();
+getPokedex();
